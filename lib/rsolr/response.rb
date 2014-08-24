@@ -14,7 +14,13 @@ module RSolr::Response
   # A response module which gets mixed into the solr ["response"]["docs"] array.
   module PaginatedDocSet
 
-    attr_accessor :start, :per_page, :total
+    attr_accessor :rsolr_start, :rsolr_per_page, :rsolr_total
+    alias_method :start, :rsolr_start
+    alias_method :per_page, :rsolr_per_page
+    alias_method :total, :rsolr_total
+    alias_method :start=, :rsolr_start=
+    alias_method :per_page=, :rsolr_per_page=
+    alias_method :total=, :rsolr_total=
 
     # Returns the current page calculated from 'rows' and 'start'
     def current_page
